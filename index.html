@@ -1,0 +1,49 @@
+<div class="login-box">
+    <h1>Login..</h1>
+    <p>Welcome. Log in to continue.</p>
+
+    <form action="home.html" method="get">
+        <button type="submit">Login...</button>
+    </form>
+
+    <div class="language">
+        <button type="button" id="languageBtn">العربية ▾</button>
+
+        <div class="language-menu" id="languageMenu">
+            <button type="button" data-lang="ar">العربية</button>
+            <button type="button" data-lang="en">English</button>
+        </div>
+    </div>
+</div>
+
+<audio id="myMusic" loop>
+    <source src="music.mp3/Warm-Memories-Emotional-Inspiring-Piano(chosic.com).mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicButton" onclick="toggleMusic()">🔊</button>
+
+<script>
+    const music = document.getElementById("myMusic");
+    const musicButton = document.getElementById("musicButton");
+
+    music.play().then(() => {
+        musicButton.textContent = "🔊";
+    }).catch(() => {
+        musicButton.textContent = "🔇";
+
+        document.addEventListener("click", function startMusic() {
+            music.play();
+            musicButton.textContent = "🔊";
+        }, { once: true });
+    });
+
+    function toggleMusic() {
+        if (music.paused) {
+            music.play();
+            musicButton.textContent = "🔊";
+        } else {
+            music.pause();
+            musicButton.textContent = "🔇";
+        }
+    }
+</script>
